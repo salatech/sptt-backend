@@ -1,0 +1,27 @@
+syntax = "proto3";
+ 
+package speech;
+
+// The SpeechRecognition service definition.
+service SpeechRecognition {
+    // Recognizes speech from the audio input.
+    rpc Recognize(SpeechRequest) returns (SpeechResponse);
+}
+
+// The request message containing the audio data.
+message SpeechRequest {
+    // The audio data in bytes.
+    bytes audio_data = 1;
+
+    // Optional: The language code of the audio (e.g., "en-US").
+    string language_code = 2;
+}
+
+// The response message containing the recognized text.
+message SpeechResponse {
+    // The recognized text from the audio input.
+    string transcript = 1;
+
+    // Optional: Confidence score of the recognition (0.0 to 1.0).
+    float confidence = 2;
+}
